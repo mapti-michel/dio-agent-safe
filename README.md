@@ -57,8 +57,47 @@ Fale naturalmente, com as suas palavras. Nas primeiras vezes, vale usar um dos [
 | [Pesquisa na web](skills/web-search/SKILL.md) | Responde dúvidas atuais (versões, lançamentos, mercado) com fontes citadas | "Qual a versão estável do Node hoje?" |
 | [Revisão de portfólio](skills/portfolio-review/SKILL.md) | Dá feedback sobre o seu portfólio e GitHub antes de buscar vagas | "O que falta no meu GitHub para uma vaga júnior?" |
 | [Caminho AI Builder](skills/ai-builder-path/SKILL.md) | Ajuda você a escolher o próximo passo na Carreira AI Builder | "Qual Formação AI Builder combina comigo?" |
-
+| [Análise de vulnerabilidades](skills/vulnerability-analysis/SKILL.md) | Orienta análises defensivas de vulnerabilidades, riscos e correções | "Analise esta aplicação em busca de SQL Injection." |
 A pesquisa na web usa a busca do seu harness. Se ele não tiver busca própria, veja [como conectar o You.com](docs/youcom-mcp.md), que tem uma opção gratuita.
+
+---
+
+
+## 🔐 Especialização em Segurança da Informação
+
+Esta versão do DIO Agent foi especializada em Segurança da Informação, com foco em Application Security (AppSec).
+
+A especialização amplia a capacidade do agente de orientar estudantes na identificação, análise e mitigação de vulnerabilidades.
+
+### Conhecimentos incorporados
+
+- Fundamentos de Segurança da Informação;
+- Vulnerabilidades, ameaças e riscos;
+- Tríade CIA: Confidencialidade, Integridade e Disponibilidade;
+- CWE, CVE e OWASP;
+- Boas práticas de desenvolvimento seguro.
+
+### Arquivos adicionados ou atualizados
+
+- `agent/knowledge/security-basics.md`: fundamentos de segurança;
+- `agent/persona.md`: atualização da atuação do mentor;
+- `skills/vulnerability-analysis/SKILL.md`: procedimento de análise;
+- `skills/vulnerability-analysis/README.md`: documentação da nova skill;
+- `AGENTS.md`: registro e disponibilização da especialização.
+
+### Laboratório de validação
+
+A validação compara um exemplo de código vulnerável a SQL Injection, apresentado ao agente durante os testes, com a implementação corrigida em `agent/app.py`, que utiliza consultas parametrizadas.
+
+A proposta é verificar se o agente consegue identificar a falha, explicar os riscos e reconhecer a correção aplicada.
+
+### Como utilizar
+
+Abra a pasta do projeto em um harness compatível com `AGENTS.md`, como o Hermes.
+
+Converse com o DIO Agent e solicite uma análise defensiva de uma aplicação de laboratório. A skill de análise de vulnerabilidades deverá orientar o processo.
+
+Utilize exclusivamente ambientes próprios ou autorizados.
 
 ---
 
@@ -114,15 +153,28 @@ O DIO Agent evolui com o tempo. Se você usou Git, rode `git pull` no terminal, 
 ## 🗂️ Estrutura do repositório
 
 ```
-dio-agent/
+dio-agent-safe/
 ├── README.md                Este guia
 ├── AGENTS.md                Definição do agente (lida pelo harness)
 ├── CLAUDE.md                Atalho para o Claude Code
 ├── agent/
-│   ├── persona.md           A personalidade e o tom do agente
-│   └── knowledge/           O que o agente sabe sobre a DIO
-├── skills/                  Uma pasta por skill, cada uma com o seu SKILL.md
+    ├── app.py               Exemplo de autenticação com consultas parametrizadas
+    ├── persona.md           A personalidade e o tom do agente
+    └── knowledge/           O que o agente sabe sobre a DIO
+        ├── dio-platform.md
+        ├── learning-experiences.md
+        └── security-basics.md
+├── skills/
+    ├── ... (demais skills)
+    └── vulnerability-analysis/
+        ├── README.md
+        └── SKILL.md
 └── docs/
+    └── evidence/
+    |   ├── 01-vulnerable-code.png
+    |   ├── 02-vulnerability-detection.png
+    |   ├── 03-corrected-code.png
+    |   └── 04-correction-analysis.png
     ├── glossary.md          Glossário de termos
     └── youcom-mcp.md        Como conectar a busca do You.com
 ```
